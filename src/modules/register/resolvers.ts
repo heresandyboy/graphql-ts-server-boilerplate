@@ -1,18 +1,17 @@
 import * as bcrypt from "bcryptjs";
-import { IResolverMap } from "./types/graphql-utils";
-import { GQL } from "./types/schema";
-import { User } from "./entity/User";
+import { IResolverMap } from "../../types/graphql-utils";
+import { GQL } from "../../types/schema";
+import { User } from "../../entity/User";
 
 // import { IResolvers } from "graphql-yoga/dist/types";
 
-// bug in ts > 2.6 and graphql cant use IResolvers to auto detemin the types
+// bug in ts > 2.6 and graphql cant use IResolvers to auto detemine the types
 // IResolverMap is a workaround
 // see here for latest: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/21359
 
 export const resolvers: IResolverMap = {
   Query: {
-    hello: (_, { name }: GQL.IHelloOnQueryArguments) =>
-      `Hello ${name || "World"}`
+    bye: () => "bye"
   },
   Mutation: {
     register: async (
