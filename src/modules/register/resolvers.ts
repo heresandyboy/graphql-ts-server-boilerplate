@@ -18,13 +18,30 @@ export const resolvers: IResolverMap = {
       _,
       { email, password }: GQL.IRegisterOnMutationArguments
     ) => {
+      const userAlreadyExists = await User.findOne({
+        where: { email },
+        select: ["id"]
+      });
+
+      // screw this - try @directives to handle pre-validation
+      // I do like the error control though
+      if (userAlreadyExists) {
+        return [
+          {
+            path: "email",
+            message: "already taken"
+          }
+        ];
+      }
+
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = User.create({
         email,
         password: hashedPassword
       });
+
       await user.save();
-      return true;
+      return null;
     }
   }
 };
