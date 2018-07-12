@@ -22,7 +22,7 @@
         "pg": "^7.3.0",
         "reflect-metadata": "^0.1.10",
         "typeorm": "0.2.7",
-        "uuid": "^3.3.2"
+        "yup": "^0.25.1"
     },
     "devDependencies": {
         "@types/bcryptjs": "^2.4.1",
@@ -31,6 +31,7 @@
         "@types/jest": "^23.1.4",
         "@types/node": "^10.5.1",
         "@types/uuid": "^3.4.3",
+        "@types/yup": "^0.24.7",
         "gql2ts": "^1.7.2",
         "jest": "^23.3.0",
         "nodemon": "^1.17.5",
