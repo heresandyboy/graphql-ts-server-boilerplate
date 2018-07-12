@@ -11,6 +11,7 @@ import {
   invalidEmail,
   passwordNotLongEnough
 } from "./errorMessages";
+import { createConfirmEmailLink } from "../../utils/createConfirmEmailLink";
 
 // import { IResolvers } from "graphql-yoga/dist/types";
 
@@ -35,7 +36,11 @@ export const resolvers: IResolverMap = {
     bye: () => "bye"
   },
   Mutation: {
-    register: async (_, args: GQL.IRegisterOnMutationArguments) => {
+    register: async (
+      _,
+      args: GQL.IRegisterOnMutationArguments,
+      { redis, url }
+    ) => {
       try {
         await schema.validate(args, { abortEarly: false });
       } catch (err) {
@@ -68,6 +73,9 @@ export const resolvers: IResolverMap = {
       });
 
       await user.save();
+
+      const link = await createConfirmEmailLink(url, user.id, redis);
+
       return null;
     }
   }

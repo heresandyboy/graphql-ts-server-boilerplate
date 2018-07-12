@@ -13,15 +13,18 @@
         "ci": "start-server-and-test test-server http://localhost:4000 & test"
     },
     "dependencies": {
+        "@types/ioredis": "^3.2.12",
         "bcryptjs": "^2.4.3",
         "graphql": "^0.13.2",
         "graphql-import": "^0.6.0",
         "graphql-request": "^1.6.0",
         "graphql-tools": "^3.0.5",
         "graphql-yoga": "^1.14.10",
+        "ioredis": "^3.2.2",
         "pg": "^7.3.0",
         "reflect-metadata": "^0.1.10",
         "typeorm": "0.2.7",
+        "uuid": "^3.3.2",
         "yup": "^0.25.1"
     },
     "devDependencies": {
